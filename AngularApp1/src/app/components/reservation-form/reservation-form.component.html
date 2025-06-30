@@ -1,0 +1,25 @@
+<h2>Reserve Your Time Slot</h2>
+<!-- Reservation form with two-way data binding and submit handler -->
+<form (ngSubmit)="submitForm()">
+  <label>Full Name: <input [(ngModel)]="name" name="name" required></label><br>
+  <label>Email: <input [(ngModel)]="email" name="email" required></label><br>
+  <label>Date: <input [(ngModel)]="date" name="date" type="date" required></label><br>
+
+  <label>Conservation Area:
+    <select [(ngModel)]="areaId" name="areaId">
+      <option *ngFor="let area of areas" [value]="area.id">{{ area.name }}</option>
+    </select>
+  </label><br>
+
+  <label>Time Slot:
+    <select [(ngModel)]="timeSlot" name="timeSlot">
+      <option *ngFor="let slot of timeSlots" [value]="slot">{{ slot }}</option>
+    </select>
+  </label><br>
+    <!-- Submit Button-->
+  <button type="submit">Reserve</button>
+</form>
+<!-- success Message -->
+<div *ngIf="submitted">
+  <p>Reservation submitted successfully!</p>
+</div>
